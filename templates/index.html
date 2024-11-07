@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block pagecontent %}
+{% for _ in "123" %}
+<div class="container-fluid my-4 question-layout">
+    <div class="row py-1 ">
+        <div class="col-md-1 justify-content-end">
+            <img src="../static/img/default_avatar.svg" class="w-100 h-100" alt="Аватар">
+        </div>
+        <div class="col-md-8 px-5 justify-content-center">
+            <h4 class="text-start text-truncate">
+                <a href="#">Вопрос</a>
+            </h4>
+        </div>
+    </div>
+    <div class="row py-1 align-items-center ">
+        <div class="col-md-1"></div>
+        <div class="col-md-8 px-5 justify-content-center">
+            Описание вопроса
+        </div>
+    </div>
+    <div class="row py-1 align-items-center ">
+        <div class="col-md-1">
+            <input class="w-100" type="number" value="0" step="1">
+        </div>
+        <div class="col-md-3">
+            <a href="#">
+                <h6>Ответов: {{ answer_count }}</h6>
+            </a>
+        </div>
+        <div class="col-md-1 align-items-end">
+            <h6>Тэги: </h6>
+        </div>
+        <div class="col-md-7 justify-content-center">
+            <ul class="list-inline">
+                {% for question_tag in question_tags %}
+                <li class="list-inline-item">
+                    <a href="">{{ question_tag }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endfor %}
+<footer>
+    <div class="container-fluid">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination" id="pagination">
+                <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+                </li>
+                {% for page_index in page_count %}
+                <li class="page-item">
+                <a class="page-link" aria-current="page" href="#">{{ page_index }}</a>
+            </li>
+                {% endfor %}
+                <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</footer>
+{% endblock %}

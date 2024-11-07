@@ -1,0 +1,36 @@
+span.site-name {
+    font-weight: 900;
+    font-size: 20px;
+    font-style: italic;
+}
+
+span.tag-title {
+    font-weight: 700;
+    font-size: 25px;
+}
+
+li.tag {
+    color: #AC4FC6;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+li.member {
+    color: #007f4e;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.list-inline-item:not(:last-child)::after {
+    content: ", ";
+}
+
+/*! ПРИМЕНЯЕТСЯ ДЛЯ ДЕБАГА*/
+div.DEBUG {
+    border: 2px solid black;
+}
+
+div.question-layout {
+    border: 2px solid black;
+    border-radius: 2px;
+}
