@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block pagecontent %}
+<h4> Тэг: {{ current_tag }}</h4>
+{% for _ in "___" %}
+    {% include "question_card.html" %}
+{% endfor %}
+<footer>
+{% include "pagination.html" %}
+</footer>
+{% endblock %}

@@ -1,0 +1,40 @@
+<div class="container-fluid my-4 block-layout">
+    <div class="row py-1 ">
+        <div class="col-md-1 justify-content-end">
+            <!--Добавить обработку для пользователя с аватаркой-->
+            <img src="../static/img/default_avatar.svg" class="w-100 h-100" alt="Аватар">
+        </div>
+        <div class="col-md-8 px-5 justify-content-center">
+            <h4 class="text-start text-truncate">
+                <a href="{% url 'question_page' %}">Вопрос</a>
+            </h4>
+        </div>
+    </div>
+    <div class="row py-1 align-items-center ">
+        <div class="col-md-8 offset-md-1 px-5 justify-content-center">
+            Описание вопроса
+        </div>
+    </div>
+    <div class="row py-1 align-items-center ">
+        <div class="col-md-1">
+            <input class="w-100" type="number" value="0" step="1">
+        </div>
+        <div class="col-md-3">
+            <a href="{% url 'question_page' %}">
+                <h6>Ответов: {{ answer_count }}</h6>
+            </a>
+        </div>
+        <div class="col-md-1 align-items-end">
+            <h6>Тэги: </h6>
+        </div>
+        <div class="col-md-7 justify-content-center">
+            <ul class="list-inline">
+                {% for question_tag in question_tags %}
+                <li class="list-inline-item">
+                    <a href="">{{ question_tag }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>

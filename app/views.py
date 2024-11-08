@@ -4,7 +4,7 @@ from django.shortcuts import render
 def main_page(request):    
     return render(request, "index.html", {})
 
-def question_page(request):
+def ask_page(request):
     return render(request, "ask.html", {})
 
 def login_page(request):
@@ -15,3 +15,9 @@ def registration_page(request):
 
 def user_settings_page(request):
     return render(request, "settings.html", {})
+
+def question_page(request):
+    return render(request, "question.html", {})
+
+def tag_page(request):
+    return render(request, "tag.html", {})

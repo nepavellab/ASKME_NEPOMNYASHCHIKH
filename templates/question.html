@@ -1,5 +1,67 @@
 {% extends "base.html" %}
 
 {% block pagecontent %}
-
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2">
+            <div class="mb-4">
+                {% if user_avatar|length > 0 %}
+                <img src="uploads/.../{{ user_avatar }}" class="col-md-9" alt="Аватар пользователя">
+                {% else %}
+                <img src="../static/img/default_avatar.svg" class="col-md-9" alt="Аватар пользователя">
+                {% endif %}
+            </div>
+            <input class="w-100" type="number" value="0" step="1">
+        </div>
+        <div class="col-md-10">
+            <div class="mb-3">
+                <h5 class="font-weight-bold">Вопрос</h5>
+            </div>
+            <div>
+                Описание вопроса
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10 offset-md-2">
+            <hr class="separator-line" />
+            Тэги:
+        </div>
+    </div>
+    <hr class="separator-line" />
+    {% for _ in "__" %}
+    <div class="container-fluid block-layout my-3 py-3">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="mb-4">
+                    {% if user_avatar|length > 0 %}
+                    <img src="uploads/.../{{ user_avatar }}" class="col-md-9 w-25 h-25" alt="Аватар пользователя">
+                    {% else %}
+                    <img src="../static/img/default_avatar.svg" class="col-md-9" alt="Аватар пользователя">
+                    {% endif %}
+                </div>
+                <input class="w-100" type="number" value="0" step="1">
+            </div>
+            <div class="col-md-10">
+                Текст ответа
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    <hr class="separator-line" />
+    <div class="container-fluid">
+        <form>
+            <div class="form-group row my-3">
+                <div class="col-md-12">
+                    <textarea class="form-control" id="answer" placeholder="Знаете ответ на этот вопрос? Напишите!"></textarea>
+                </div>
+            </div>
+            <div class="form-group row my-3">
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-primary">Отправить ответ</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 {% endblock %}

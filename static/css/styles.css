@@ -9,6 +9,11 @@ span.tag-title {
     font-size: 25px;
 }
 
+hr.separator-line {
+    height: 2px;
+    background-color: black;
+}
+
 li.tag {
     color: #AC4FC6;
     font-weight: 700;
@@ -24,7 +29,7 @@ div.DEBUG {
     border: 2px solid black;
 }
 
-div.question-layout {
+div.block-layout {
     border: 1px solid black;
     border-radius: 5px;
 }
