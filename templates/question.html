@@ -15,10 +15,10 @@
         </div>
         <div class="col-md-10">
             <div class="mb-3">
-                <h5 class="font-weight-bold">Вопрос</h5>
+                <h5 class="font-weight-bold">{{ question.title }}</h5>
             </div>
             <div>
-                Описание вопроса
+                {{ question.text }}
             </div>
         </div>
     </div>
@@ -26,6 +26,13 @@
         <div class="col-md-10 offset-md-2">
             <hr class="separator-line" />
             Тэги:
+            <ul class="list-inline">
+                {% for question_tag in question.tags %}
+                <li class="list-inline-item">
+                    <a href="">{{ question_tag }}</a>
+                </li>
+                {% endfor %}
+            </ul>
         </div>
     </div>
     <hr class="separator-line" />
