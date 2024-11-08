@@ -19,7 +19,7 @@
             <nav class="navbar navbar-light bg-light">
                 <div class="row w-100">
                     <div class="col-md-3 d-flex justify-content-start align-items-center" >
-                        <a class="navbar-brand" href="#">
+                        <a class="navbar-brand" href="{% url 'main_page' %}">
                             <span class="site-name">Ask & Answer</span>
                         </a>
                     </div>
@@ -30,8 +30,8 @@
                         </form>
                     </div>
                     <div class="col-md-4 d-flex justify-content-end align-items-center">
-                        <button class="btn btn-link" type="button">Войти</button>
-                        <button class="btn btn-link" type="button">Зарегистрироваться</button>
+                        <a class="btn btn-link" role="button" href="{% url 'login_page' %}">Войти</a>
+                        <a class="btn btn-link" role="button" href="{% url 'register_page' %}">Зарегистрироваться</a>
                     </div>
                 </div>
             </nav>
@@ -55,7 +55,9 @@
                     <h5 class="text-center">Топ участников</h5>
                     <ul class="list-group overflow-auto" style="height: 200px;">
                         {% for member in top_members %}
-                        <li class="list-group-item member">{{ member }}</li>
+                        <a href="#">
+                            <li class="list-group-item">{{ member }}</li>
+                        </a>
                         {% endfor %}
                     </ul>
                 </div>

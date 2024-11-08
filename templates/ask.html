@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block pagecontent %}
+<h3>Новый вопрос</h3>
+<div class="container-fluid mt-5">
+    <form>
+        <div class="form-group row my-3">
+            <label for="title" class="col-md-2 col-form-label">
+                <h6 class="font-weight-bolder">Заголовок</h6>
+            </label>
+            <div class="col-md-10">
+                <input type="text" class="form-control" id="title" placeholder="Введите свой вопрос">
+            </div>
+        </div>
+        <div class="form-group row my-3">
+            <label for="description" class="col-md-2 col-form-label">
+                <h6 class="font-weight-bolder">Описание</h6>
+            </label>
+            <div class="col-md-10">
+                <textarea class="form-control" id="description" rows="5" placeholder="Подробно опишите вашу проблему"></textarea>
+            </div>
+        </div>
+        <div class="form-group row my-3">
+            <label for="tags" class="col-md-2 col-form-label">
+                <h6 class="font-weight-bolder">Тэги</h6>
+            </label>
+            <div class="col-md-10">
+                <input type="text" class="form-control" id="tags" placeholder="Укажите тематические тэги вашего вопроса">
+            </div>
+        </div>
+        <div class="form-group row my-3">
+            <div class="col-md-10 offset-md-2">
+                <button type="submit" class="btn btn-primary">Задать вопрос</button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

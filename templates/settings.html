@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block pagecontent %}
+<h3>Настройки пользователя: {{ user_name }}</h3>
+<form>
+    <div class="form-group row my-3">
+        <label for="login" class="col-md-3 col-form-label">
+            <h6 class="font-weight-bolder">Логин</h6>
+        </label>
+        <div class="col-md-7">
+            <input type="text" id="login" placeholder="Введите логин" class="form-control">
+        </div>
+    </div>
+    <div class="form-group row my-3">
+        <label for="email" class="col-md-3 col-form-label">
+            <h6 class="font-weight-bolder">Почта</h6>
+        </label>
+        <div class="col-md-7">
+            <input type="email" id="email" placeholder="Введите адрес электронной почты" class="form-control">
+        </div>
+    </div>
+    <div class="form-group row my-3">
+        <label for="nick" class="col-md-3 col-form-label">
+            <h6 class="font-weight-bolder">Имя</h6>
+        </label>
+        <div class="col-md-7">
+            <input type="text" id="nick" placeholder="Введите свой ник" class="form-control">
+        </div>
+    </div>
+    <div class="form-group row my-3">
+        <label for="avatar" class="col-md-3 col-form-label">
+            <h6 class="font-weight-bolder">Загрузите аватар</h6>
+        </label>
+        {% if user_avatar|length > 0 %}
+        <img src="uploads/.../{{ user_avatar }}" class="col-md-9 avatar-layout" alt="Аватар пользователя">
+        {% else %}
+        <img src="../static/img/default_avatar.svg" class="col-md-9 avatar-layout" alt="Аватар пользователя">
+        {% endif %}
+    </div>
+    <div class="form-group row my-3">
+        <div class="col-md-5 offset-md-3">
+            <input type="file" id="avatar" accept="image/*" class="custom-file-input">
+        </div>
+    </div>
+    <div class="form-group row my-3">
+        <div class="col-md-10 offset-md-3">
+            <button type="submit" class="btn btn-primary">Сохранить</button>
+        </div>
+    </div>
+</form>
+{% endblock %}
