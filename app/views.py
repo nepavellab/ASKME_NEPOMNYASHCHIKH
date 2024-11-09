@@ -10,13 +10,15 @@ QUESTIONS = [
         "answer_count": randint(0, 1000),
         "text": f"Здесь располагается основной текст вопроса №{i}, описывающий проблематику задачи",
         "tags": [f"Тэг №{j}-{i}" for j in range(1, 6)] 
-    } for i in range(1, 21)
+    } for i in range(1, 201)
 ]
 
 def main_page(request):
-    page = paginate(QUESTIONS, request, 5)
+    page, page_count = paginate(QUESTIONS, request, 5)
     return render(request, "index.html", {
-        "page": page
+        "page": page,
+        "page_count": page_count,
+        "page_number": page.number
     })
 
 def ask_page(request):
@@ -50,4 +52,4 @@ def paginate(object_list, request, per_page):
         current_page_number = paginator.num_pages
     
     page = paginator.page(current_page_number)
-    return page
+    return page, paginator.num_pages
