@@ -14,8 +14,9 @@ QUESTIONS = [
 ]
 
 def main_page(request):
+    page = paginate(QUESTIONS, request, 5)
     return render(request, "index.html", {
-        "questions": QUESTIONS
+        "page": page
     })
 
 def ask_page(request):
@@ -41,7 +42,12 @@ def tag_page(request):
         "questions": QUESTIONS
     })
 
-def paginate(objects_list, request, per_page=10):
-    # do smth with Paginator, etc…
-    #return page
-    pass
+def paginate(object_list, request, per_page):
+    paginator = Paginator(object_list, per_page)
+    current_page_number = int(request.GET.get("page", 1))
+    
+    if current_page_number > paginator.num_pages:
+        current_page_number = paginator.num_pages
+    
+    page = paginator.page(current_page_number)
+    return page

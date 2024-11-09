@@ -11,10 +11,12 @@
         </a>
     </div>
 </div>
+{% with questions=page.object_list %}
 {% for question in questions %}
     {% include "layouts/question_card.html" %}
 {% endfor %}
 <footer>
 {% include "layouts/pagination.html" %}
+{% endwith %}
 </footer>
 {% endblock %}
