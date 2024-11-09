@@ -10,7 +10,7 @@ QUESTIONS = [
         "answer_count": randint(0, 1000),
         "text": f"Здесь располагается основной текст вопроса №{i}, описывающий проблематику задачи",
         "tags": [f"Тэг №{j}-{i}" for j in range(1, 6)] 
-    } for i in range(1, 201)
+    } for i in range(1, 21)
 ]
 
 def main_page(request):
