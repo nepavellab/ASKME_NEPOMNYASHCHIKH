@@ -1,4 +1,5 @@
-{% extends "base.html" %}
+{% extends "./layouts/base.html" %}
+{% load static %}
 
 {% block pagecontent %}
 <div class="container-fluid">
@@ -8,7 +9,7 @@
                 {% if user_avatar|length > 0 %}
                 <img src="uploads/.../{{ user_avatar }}" class="col-md-9" alt="Аватар пользователя">
                 {% else %}
-                <img src="../static/img/default_avatar.svg" class="col-md-9" alt="Аватар пользователя">
+                <img src="{% static 'img/default_avatar.svg' %}" class="col-md-9" alt="Аватар пользователя">
                 {% endif %}
             </div>
             <input class="w-100" type="number" value="0" step="1">
@@ -36,7 +37,8 @@
         </div>
     </div>
     <hr class="separator-line" />
-    {% for _ in "__" %}
+    {% with answers=page.object_list %}
+    {% for answer in answers %}
     <div class="container-fluid block-layout my-3 py-3">
         <div class="row">
             <div class="col-md-2">
@@ -44,13 +46,13 @@
                     {% if user_avatar|length > 0 %}
                     <img src="uploads/.../{{ user_avatar }}" class="col-md-9 w-25 h-25" alt="Аватар пользователя">
                     {% else %}
-                    <img src="../static/img/default_avatar.svg" class="col-md-9" alt="Аватар пользователя">
+                    <img src="{% static 'img/default_avatar.svg' %}" class="col-md-9" alt="Аватар пользователя">
                     {% endif %}
                 </div>
                 <input class="w-100" type="number" value="0" step="1">
             </div>
             <div class="col-md-10">
-                Текст ответа
+                {{ answer }}
             </div>
         </div>
     </div>
@@ -71,4 +73,8 @@
         </form>
     </div>
 </div>
+<footer>
+{% include "components/pagination.html" %}
+</footer>
+{% endwith %}
 {% endblock %}

@@ -4,6 +4,7 @@ from app import views
 
 app_patterns = [
     path("", views.main_page, name="main_page"),
+    path("hot/", views.hot_page, name="hot_page"),
     path("ask/", views.ask_page, name="ask_page"),
     path("login/", views.login_page, name="login_page"),
     path("register/", views.registration_page, name="register_page"),

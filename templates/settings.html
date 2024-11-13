@@ -1,4 +1,5 @@
-{% extends "base.html" %}
+{% extends "./layouts/base.html" %}
+{% load static %}
 
 {% block pagecontent %}
 <h3>Настройки пользователя: {{ user_name }}</h3>
@@ -34,7 +35,7 @@
         {% if user_avatar|length > 0 %}
         <img src="uploads/.../{{ user_avatar }}" class="col-md-9 avatar-layout" alt="Аватар пользователя">
         {% else %}
-        <img src="../static/img/default_avatar.svg" class="col-md-9 avatar-layout" alt="Аватар пользователя">
+        <img src="{% static 'img/default_avatar.svg' %}" class="col-md-9 avatar-layout" alt="Аватар пользователя">
         {% endif %}
     </div>
     <div class="form-group row my-3">

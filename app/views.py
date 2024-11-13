@@ -1,21 +1,29 @@
 from django.shortcuts import render
-from django.core.paginator import Paginator
-from random import randint
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # ! Для тестов без базы данных
 QUESTIONS = [
     {
         "id": i,
         "title": f"Вопрос №{i}",
-        "answer_count": randint(0, 1000),
+        "answer_count": 100,
         "text": f"Здесь располагается основной текст вопроса №{i}, описывающий проблематику задачи",
-        "tags": [f"Тэг №{j}-{i}" for j in range(1, 6)] 
-    } for i in range(1, 21)
+        "answers": [f"Здесь располагается ответ №{j + 1} на вопрос №{i}" for j in range(100)],
+        "tags": [f"Тэг №{j}-{i}" for j in range(1, 6)]
+    } for i in range(1, 201)
 ]
 
 def main_page(request):
     page, page_count = paginate(QUESTIONS, request, 5)
     return render(request, "index.html", {
+        "page": page,
+        "page_count": page_count,
+        "page_number": page.number
+    })
+    
+def hot_page(request):
+    page, page_count = paginate(QUESTIONS, request, 5)
+    return render(request, "hot.html", {
         "page": page,
         "page_count": page_count,
         "page_number": page.number
@@ -35,8 +43,12 @@ def user_settings_page(request):
 
 def question_page(request, question_id):
     current_question = QUESTIONS[question_id-1]
+    page, page_count = paginate(current_question["answers"], request, 5)
     return render(request, "question.html", {
-        "question": current_question
+        "question": current_question,
+        "page": page,
+        "page_count": page_count,
+        "page_number": page.number
     })
 
 def tag_page(request):
@@ -46,10 +58,13 @@ def tag_page(request):
 
 def paginate(object_list, request, per_page):
     paginator = Paginator(object_list, per_page)
-    current_page_number = int(request.GET.get("page", 1))
     
-    if current_page_number > paginator.num_pages:
-        current_page_number = paginator.num_pages
+    try:
+        current_page_number = request.GET.get("page", 1)
+        page = paginator.page(current_page_number)
+    except PageNotAnInteger:
+        page = paginator.page(1)
+    except EmptyPage:
+        page = paginator.page(paginator.num_pages)
     
-    page = paginator.page(current_page_number)
     return page, paginator.num_pages

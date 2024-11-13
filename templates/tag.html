@@ -1,11 +1,12 @@
-{% extends "base.html" %}
+{% extends "./layouts/base.html" %}
+{% load static %}
 
 {% block pagecontent %}
 <h4> Тэг: {{ current_tag }}</h4>
 {% for question in questions %}
-    {% include "layouts/question_card.html" %}
+    {% include "components/question_card.html" %}
 {% endfor %}
 <footer>
-{% include "layouts/pagination.html" %}
+{% include "components/pagination.html" %}
 </footer>
 {% endblock %}
