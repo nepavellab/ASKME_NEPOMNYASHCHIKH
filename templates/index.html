@@ -14,12 +14,12 @@
     </div>
 </div>
 {% endblock %}
-{% with questions=page.object_list %}
+{% with questions=page.object_list.all %}
 {% for question in questions %}
     {% include "components/question_card.html" %}
 {% endfor %}
 <footer>
 {% include "components/pagination.html" %}
-{% endwith %}
 </footer>
+{% endwith %}
 {% endblock %}

@@ -28,7 +28,7 @@
             <hr class="separator-line" />
             Тэги:
             <ul class="list-inline">
-                {% for question_tag in question.tags %}
+                {% for question_tag in question.tags.all %}
                 <li class="list-inline-item">
                     <a href="">{{ question_tag }}</a>
                 </li>
@@ -37,7 +37,7 @@
         </div>
     </div>
     <hr class="separator-line" />
-    {% with answers=page.object_list %}
+    {% with answers=page.object_list.all %}
     {% for answer in answers %}
     <div class="container-fluid block-layout my-3 py-3">
         <div class="row">

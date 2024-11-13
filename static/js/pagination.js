@@ -28,7 +28,7 @@ function pagination_load(page_count, active_page_number) {
     }
 
     if (page_count <= pagination_line_length) {
-        for (let page_number = active_page_number; page_number <= page_count; page_number++) {
+        for (let page_number = 1; page_number <= page_count; page_number++) {
             add_page_number(page_number)
         }
     } else {

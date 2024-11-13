@@ -1,59 +1,74 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from .models import Question, Answer, Profile, Tag
+from typing import Final
 
-# ! Для тестов без базы данных
-QUESTIONS = [
-    {
-        "id": i,
-        "title": f"Вопрос №{i}",
-        "answer_count": 100,
-        "text": f"Здесь располагается основной текст вопроса №{i}, описывающий проблематику задачи",
-        "answers": [f"Здесь располагается ответ №{j + 1} на вопрос №{i}" for j in range(100)],
-        "tags": [f"Тэг №{j}-{i}" for j in range(1, 6)]
-    } for i in range(1, 201)
-]
+
+all_tags: Final = Tag.objects.distinct().order_by('name')
 
 def main_page(request):
-    page, page_count = paginate(QUESTIONS, request, 5)
+    questions = Question.objects.all()
+    page, page_count = paginate(questions, request, 5)
     return render(request, "index.html", {
         "page": page,
         "page_count": page_count,
-        "page_number": page.number
+        "page_number": page.number,
+        "all_tags": all_tags
     })
     
 def hot_page(request):
-    page, page_count = paginate(QUESTIONS, request, 5)
+    hot_questions = Question.objects.order_by('-created_at')
+    page, page_count = paginate(hot_questions, request, 5)
     return render(request, "hot.html", {
         "page": page,
         "page_count": page_count,
-        "page_number": page.number
+        "page_number": page.number,
+        "all_tags": all_tags
     })
 
 def ask_page(request):
-    return render(request, "ask.html", {})
+    return render(request, "ask.html", {
+        "all_tags": all_tags
+    })
 
 def login_page(request):
-    return render(request, "login.html", {})
+    return render(request, "login.html", {
+        "all_tags": all_tags
+    })
 
 def registration_page(request):
-    return render(request, "signup.html", {})
+    return render(request, "signup.html", {
+        "all_tags": all_tags
+    })
 
 def user_settings_page(request):
-    return render(request, "settings.html", {})
+    return render(request, "settings.html", {
+        "all_tags": all_tags
+    })
 
 def question_page(request, question_id):
-    current_question = QUESTIONS[question_id-1]
-    page, page_count = paginate(current_question["answers"], request, 5)
+    current_question = get_object_or_404(Question, id=question_id)
+    answers = Answer.objects.filter(question=current_question)
+    page, page_count = paginate(answers, request, 5)
     return render(request, "question.html", {
         "question": current_question,
         "page": page,
         "page_count": page_count,
-        "page_number": page.number
+        "page_number": page.number,
+        "all_tags": all_tags
     })
 
-def tag_page(request):
+def tag_page(request, tag_name):
+    tag = get_object_or_404(Tag, name=tag_name)
+    tag_questions = Question.objects.filter(tags=tag)
+    page, page_count = paginate(tag_questions, request, per_page=5)
+    
     return render(request, "tag.html", {
-        "questions": QUESTIONS
+        "current_tag_name": tag_name,
+        "questions": page,
+        "page_count": page_count,
+        "page_number": page.number,
+        "all_tags": all_tags
     })
 
 def paginate(object_list, request, per_page):

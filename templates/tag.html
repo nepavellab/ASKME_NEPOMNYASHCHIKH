@@ -2,11 +2,13 @@
 {% load static %}
 
 {% block pagecontent %}
-<h4> Тэг: {{ current_tag }}</h4>
+<h4> Тэг: {{ current_tag_name }}</h4>
+{% with questions=page.object_list.all %}
 {% for question in questions %}
     {% include "components/question_card.html" %}
 {% endfor %}
 <footer>
 {% include "components/pagination.html" %}
 </footer>
+{% endwith %}
 {% endblock %}

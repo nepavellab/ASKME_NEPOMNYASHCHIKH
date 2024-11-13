@@ -31,7 +31,7 @@
         </div>
         <div class="col-md-7 justify-content-center">
             <ul class="list-inline">
-                {% for question_tag in question.tags %}
+                {% for question_tag in question.tags.all %}
                 <li class="list-inline-item">
                     <a href="">{{ question_tag }}</a>
                 </li>
