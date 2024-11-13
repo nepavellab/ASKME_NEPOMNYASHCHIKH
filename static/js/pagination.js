@@ -1,3 +1,5 @@
+// TODO: Major - сделать пагинацию более удобной с точки зрения пользователя (переход на предыдущую страницу)
+
 function pagination_load(page_count, active_page_number) {
     const pagination_line_length = 10
     const pageList = document.getElementById("page_list")
@@ -25,22 +27,69 @@ function pagination_load(page_count, active_page_number) {
         pageList.appendChild(new_list_item)
     }
 
-    if (active_page_number == page_count) {
+    if (page_count <= pagination_line_length) {
+        for (let page_number = active_page_number; page_number <= page_count; page_number++) {
+            add_page_number(page_number)
+        }
+    } else {
+        if (active_page_number == page_count) {
+            add_page_number(1)
+            add_page_number("...")
+
+            for (let page_number = active_page_number - pagination_line_length; page_number <= page_count; page_number++) {
+                add_page_number(page_number)
+            }
+        } else if (page_count - active_page_number <= pagination_line_length) {
+            add_page_number(1)
+            add_page_number("...")
+
+            for (let page_number = page_count - pagination_line_length; page_number <= page_count; page_number++) {
+                add_page_number(page_number)
+            }
+        } else if (pagination_line_length > active_page_number) {
+            for (let page_number = 1; page_number <= pagination_line_length - 1; page_number++) {
+                add_page_number(page_number)
+            }
+
+            add_page_number("...")
+            add_page_number(page_count)
+        } else {
+            add_page_number(1)
+            add_page_number("...")
+
+            for (let page_number = active_page_number; page_number <= active_page_number + pagination_line_length - 1; page_number++) {
+                add_page_number(page_number)
+            }
+
+            add_page_number("...")
+            add_page_number(page_count)
+        }
+    }
+        // первая страница
+        /*if (active_page_number - pagination_line_length >= 0) {
+            add_page_number(1)
+            add_page_number("...")
+
+
+            else if (active_page_number == page_count) { // последняя страница
         add_page_number(1)
         add_page_number("...")
 
         for (let page_number = active_page_number - pagination_line_length; page_number <= page_count; page_number++) {
             add_page_number(page_number)
         }
-    } else if (page_count <= pagination_line_length) {
-        for (let page_number = active_page_number; page_number <= page_count; page_number++) {
-            add_page_number(page_number)
-        }
     } else {
-        if (active_page_number - pagination_line_length >= 0) {
+        if (active_page_number >= pagination_line_length) {
             add_page_number(1)
             add_page_number("...")
 
+            if (page_count - active_page_number <= pagination_line_length) { // плашка доходит до последней страницы
+                for (let page_number = active_page_number; page_number <= pagination_line_length + active_page_number - 2; page_number++) {
+                    add_page_number(page_number)
+                }
+            }
+        }
+    }
             for (let page_number = active_page_number; page_number <= pagination_line_length + active_page_number - 2; page_number++) {
                 add_page_number(page_number)
             }
@@ -53,6 +102,5 @@ function pagination_load(page_count, active_page_number) {
         if (page_count - active_page_number > pagination_line_length) {
             add_page_number("...")
         }
-        add_page_number(page_count)
-    }
+        add_page_number(page_count)*/
 }
