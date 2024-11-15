@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from .models import Question, Answer, Profile, Tag
+from .models import Question, Answer, Tag
 from typing import Final
 
 
@@ -65,7 +65,7 @@ def tag_page(request, tag_name):
     
     return render(request, "tag.html", {
         "current_tag_name": tag_name,
-        "questions": page,
+        "page": page,
         "page_count": page_count,
         "page_number": page.number,
         "all_tags": all_tags

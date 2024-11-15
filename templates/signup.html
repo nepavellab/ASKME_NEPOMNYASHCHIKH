@@ -3,51 +3,52 @@
 
 {% block pagecontent %}
 <h3>Регистрация</h3>
-<div class="container-fluid mt-5">
-    <form>
+<div class="container d-flex justify-content-start w-50 error-block mt-2" id="error-block"></div>
+<div class="container-fluid mt-2">
+    <form id="signup-form">
         <div class="form-group row my-3">
             <label for="login" class="col-md-3 col-form-label">
-                <h6 class="font-weight-bolder">Логин</h6>
+                Логин
             </label>
             <div class="col-md-7">
-                <input type="text" id="login" placeholder="Введите логин" class="form-control">
+                <input type="text" id="login" placeholder="Введите логин" class="form-control" required>
             </div>
         </div>
         <div class="form-group row my-3">
             <label for="email" class="col-md-3 col-form-label">
-                <h6 class="font-weight-bolder">Почта</h6>
+                Почта
             </label>
             <div class="col-md-7">
-                <input type="email" id="email" placeholder="Введите адрес электронной почты" class="form-control">
+                <input type="email" id="email" placeholder="Введите адрес электронной почты" class="form-control" required>
             </div>
         </div>
         <div class="form-group row my-3">
             <label for="nick" class="col-md-3 col-form-label">
-                <h6 class="font-weight-bolder">Имя</h6>
+                Имя
             </label>
             <div class="col-md-7">
-                <input type="text" id="nick" placeholder="Введите свой ник" class="form-control">
+                <input type="text" id="nick" placeholder="Введите свой ник" class="form-control" required>
             </div>
         </div>
         <div class="form-group row my-3">
             <label for="password" class="col-md-3 col-form-label">
-                <h6 class="font-weight-bolder">Пароль</h6>
+                Пароль
             </label>
             <div class="col-md-7">
-                <input type="password" id="password" placeholder="Введите пароль" class="form-control">
+                <input type="password" id="password" placeholder="Введите пароль" class="form-control" required>
             </div>
         </div>
         <div class="form-group row my-3">
             <label for="repeat-password" class="col-md-3 col-form-label">
-                <h6 class="font-weight-bolder">Повторите пароль</h6>
+                Повторите пароль
             </label>
             <div class="col-md-7">
-                <input type="password" id="repeat-password" placeholder="Введите тот же пароль" class="form-control">
+                <input type="password" id="repeat-password" placeholder="Введите тот же пароль" class="form-control" required>
             </div>
         </div>
         <div class="form-group row my-3">
             <label for="avatar" class="col-md-3 col-form-label">
-                <h6 class="font-weight-bolder">Загрузите свой аватар</h6>
+                Загрузите свой аватар
             </label>
             <div class="col-md-7">
                 <input type="file" id="avatar" accept="image/*" class="custom-file-input">
@@ -59,5 +60,6 @@
             </div>
         </div>
     </form>
+    <script src="{% static 'js/form_valid.js' %}" onload="signupForm()"></script>
 </div>
 {% endblock %}

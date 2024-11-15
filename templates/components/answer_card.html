@@ -1,0 +1,32 @@
+{% load static %}
+
+<div class="container-fluid block-layout my-3 py-3 px-4">
+    <div class="row">
+        <div class="col-md-2">
+            <div class="mb-4">
+                {% if answer.user.avatar|length > 0 %}
+                <img src="uploads/.../{{ user_avatar }}" class="col-md-9 w-25 h-25" alt="Аватар пользователя">
+                {% else %}
+                <img src="{% static 'img/default_avatar.svg' %}" class="col-md-9" alt="Аватар пользователя">
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-md-8 offset-md-2 block-layout">
+            {{ answer.text }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            Ответил: {{ answer.user.user }}
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-md-2">
+            <input class="w-100" type="number" value="0" step="1">
+        </div>
+        <div class="col-md-2 offset-md-2">
+            <input type="checkbox" id="is-correct-anser">
+            <label for="is-correct-anser">Верно</label>
+        </div>
+    </div>
+</div>

@@ -24,9 +24,9 @@
                         </a>
                     </div>
                     <div class="col-md-5 d-flex justify-content-center align-items-center">
-                        <form class="d-flex w-100">
+                        <form class="d-flex w-100" action="{% url 'ask_page' %}">
                             <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Search">
-                            <button class="btn btn-outline-success" type="submit">Искать</button>
+                            <button class="btn btn-outline-success" type="submit">Спросить</button>
                         </form>
                     </div>
                     <div class="col-md-4 d-flex justify-content-end align-items-center">
@@ -40,18 +40,22 @@
     <main>
         <div class="container-fluid mt-5 px-5">
             <div class="row">
-                <div class="col-md-8 p*-3 justify-content-center">
+                <div class="col-md-8 p*-3">
                 {% block pagecontent %}
                 {% block title %}
 
                 {% endblock %}
                 {% endblock %}
                 </div>
-                <div class="col-md-4 p*-3 justify-content-center">
+                <div class="col-md-4 p*-4 justify-content-center">
                     <h5 class="text-center">Популярные тэги</h5>
-                    <ul class="list-group overflow-auto" style="height: 200px;">
+                    <ul class="list-group overflow-auto" style="height: 350px;">
                         {% for tag in all_tags %}
-                        <li class="list-group-item tag">{{ tag }}</li>
+                        <li class="list-group-item">
+                            <a href="{% url 'tag_page' tag.name %}">
+                                {{ tag.name }}
+                            </a>
+                        </li>
                         {% endfor %}
                     </ul>
                     <h5 class="text-center">Топ участников</h5>

@@ -3,22 +3,23 @@
 
 {% block pagecontent %}
 <h3>Вход</h3>
-<div class="container-fluid mt-5">
+<div class="container d-flex justify-content-start w-50 error-block mt-2" id="error-block"></div>
+<div class="container-fluid mt-2">
     <form>
         <div class="form-group row my-3">
             <label for="login" class="col-md-2 col-form-label">
-                <h6 class="font-weight-bolder">Логин</h6>
+                Логин
             </label>
             <div class="col-md-7">
-                <input type="text" id="login" placeholder="Введите логин" class="form-control">
+                <input type="text" id="login" placeholder="Введите логин" class="form-control" required>
             </div>
         </div>
         <div class="form-group row my-3">
             <label for="password" class="col-md-2 col-form-label">
-                <h6 class="font-weight-bolder">Пароль</h6>
+                Пароль
             </label>
             <div class="col-md-7">
-                <input type="password" id="password" placeholder="Введите пароль" class="form-control">
+                <input type="password" id="password" placeholder="Введите пароль" class="form-control" required>
             </div>
         </div>
         <div class="form-group row my-3">

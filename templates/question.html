@@ -2,60 +2,11 @@
 {% load static %}
 
 {% block pagecontent %}
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-2">
-            <div class="mb-4">
-                {% if user_avatar|length > 0 %}
-                <img src="uploads/.../{{ user_avatar }}" class="col-md-9" alt="Аватар пользователя">
-                {% else %}
-                <img src="{% static 'img/default_avatar.svg' %}" class="col-md-9" alt="Аватар пользователя">
-                {% endif %}
-            </div>
-            <input class="w-100" type="number" value="0" step="1">
-        </div>
-        <div class="col-md-10">
-            <div class="mb-3">
-                <h5 class="font-weight-bold">{{ question.title }}</h5>
-            </div>
-            <div>
-                {{ question.text }}
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-10 offset-md-2">
-            <hr class="separator-line" />
-            Тэги:
-            <ul class="list-inline">
-                {% for question_tag in question.tags.all %}
-                <li class="list-inline-item">
-                    <a href="">{{ question_tag }}</a>
-                </li>
-                {% endfor %}
-            </ul>
-        </div>
-    </div>
+    {% include "components/question_card.html" %}
     <hr class="separator-line" />
     {% with answers=page.object_list.all %}
     {% for answer in answers %}
-    <div class="container-fluid block-layout my-3 py-3">
-        <div class="row">
-            <div class="col-md-2">
-                <div class="mb-4">
-                    {% if user_avatar|length > 0 %}
-                    <img src="uploads/.../{{ user_avatar }}" class="col-md-9 w-25 h-25" alt="Аватар пользователя">
-                    {% else %}
-                    <img src="{% static 'img/default_avatar.svg' %}" class="col-md-9" alt="Аватар пользователя">
-                    {% endif %}
-                </div>
-                <input class="w-100" type="number" value="0" step="1">
-            </div>
-            <div class="col-md-10">
-                {{ answer }}
-            </div>
-        </div>
-    </div>
+        {% include "components/answer_card.html" %}
     {% endfor %}
     <hr class="separator-line" />
     <div class="container-fluid">
@@ -72,7 +23,6 @@
             </div>
         </form>
     </div>
-</div>
 <footer>
 {% include "components/pagination.html" %}
 </footer>

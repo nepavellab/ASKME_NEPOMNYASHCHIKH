@@ -1,3 +1,5 @@
+{% load static %}
+
 <div class="container-fluid d-flex justify-content-center">
     <nav>
         <ul class="pagination" id="page_list">
@@ -13,7 +15,7 @@
             {% endif %}
             </li>
             <script
-                src="../../static/js/pagination.js" 
+                src="{% static 'js/pagination.js' %}" 
                 onload="pagination_load('{{ page_count }}', '{{ page_number }}')">
             </script>
             <li class="page-item">

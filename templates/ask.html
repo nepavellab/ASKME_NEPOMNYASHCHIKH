@@ -3,30 +3,31 @@
 
 {% block pagecontent %}
 <h3>Новый вопрос</h3>
-<div class="container-fluid mt-5">
+<div class="container d-flex justify-content-start w-50 error-block mt-2" id="error-block"></div>
+<div class="container-fluid mt-2">
     <form>
         <div class="form-group row my-3">
             <label for="title" class="col-md-2 col-form-label">
-                <h6 class="font-weight-bolder">Заголовок</h6>
+                Заголовок
             </label>
             <div class="col-md-10">
-                <input type="text" class="form-control" id="title" placeholder="Введите свой вопрос">
+                <input type="text" class="form-control" id="title" placeholder="Введите свой вопрос" required>
             </div>
         </div>
         <div class="form-group row my-3">
             <label for="description" class="col-md-2 col-form-label">
-                <h6 class="font-weight-bolder">Описание</h6>
+                Описание
             </label>
             <div class="col-md-10">
-                <textarea class="form-control" id="description" rows="5" placeholder="Подробно опишите вашу проблему"></textarea>
+                <textarea class="form-control" id="description"  rows="5" placeholder="Подробно опишите вашу проблему" required></textarea>
             </div>
         </div>
         <div class="form-group row my-3">
             <label for="tags" class="col-md-2 col-form-label">
-                <h6 class="font-weight-bolder">Тэги</h6>
+                Тэги
             </label>
             <div class="col-md-10">
-                <input type="text" class="form-control" id="tags" placeholder="Укажите тематические тэги вашего вопроса">
+                <input ype="text" class="form-control" id="tags" placeholder="Укажите тематические тэги вашего вопроса" required>
             </div>
         </div>
         <div class="form-group row my-3">
