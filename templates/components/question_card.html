@@ -32,7 +32,7 @@
             <ul class="list-inline">
                 {% for question_tag in question.tags.all %}
                 <li class="list-inline-item">
-                    <a href="">{{ question_tag }}</a>
+                    <a href="{% url 'tag_page' question_tag%}">{{ question_tag }}</a>
                 </li>
                 {% endfor %}
             </ul>
