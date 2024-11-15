@@ -23,15 +23,46 @@
                             <span class="site-name">Ask & Answer</span>
                         </a>
                     </div>
-                    <div class="col-md-5 d-flex justify-content-center align-items-center">
-                        <form class="d-flex w-100" action="{% url 'ask_page' %}">
+                    <div class="col-md-3 d-flex justify-content-center align-items-center">
+                        <form class="d-flex w-100">
                             <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Search">
-                            <button class="btn btn-outline-success" type="submit">Спросить</button>
                         </form>
                     </div>
-                    <div class="col-md-4 d-flex justify-content-end align-items-center">
-                        <a class="btn btn-link" role="button" href="{% url 'login_page' %}">Войти</a>
-                        <a class="btn btn-link" role="button" href="{% url 'register_page' %}">Зарегистрироваться</a>
+                    <div class="col-md-6 d-flex justify-content-center align-items-center">
+                        {% if 0 %} <!--Здесь находится проверка авторизации-->
+                        <div class="container-fluid d-flex justify-content-end">
+                            <a class="btn btn-link" role="button" href="{% url 'login_page' %}">Войти</a>
+                            <a class="btn btn-link" role="button" href="{% url 'register_page' %}">Зарегистрироваться</a>
+                        </div>
+                        {% else %}
+                        <div class="row mx-2 w-100 d-flex align-items-center">
+                            <div class="col-md-5">
+                                <a class="btn btn-outline-success" href="{% url 'ask_page' %}">Задать вопрос</a>
+                            </div>
+                            <div class="col-md-2 d-flex justify-content-end align-items-center">
+                                {% if user_avatar|length > 0 %}
+                                <img src="uploads/.../{{ user_avatar }}" class="icon-layout" alt="Аватар пользователя">
+                                {% else %}
+                                <img src="{% static 'img/default_avatar.svg' %}" class="icon-layout" alt="Аватар пользователя">
+                                {% endif %}
+                            </div>
+                            <div class="col-md-5">
+                                <div class="row">
+                                    <div class="col-md-12 d-flex justify-content-center">
+                                        user_name
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 d-flex justify-content-center">
+                                        <a href="{% url 'settings_page' %}">Профиль</a>
+                                    </div>
+                                    <div class="col-md-6 d-flex justify-content-center">
+                                        <a href="#">Выйти</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
                     </div>
                 </div>
             </nav>

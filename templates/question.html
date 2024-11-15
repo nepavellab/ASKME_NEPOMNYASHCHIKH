@@ -6,7 +6,7 @@
     <hr class="separator-line" />
     {% with answers=page.object_list.all %}
     {% for answer in answers %}
-        {% include "components/answer_card.html" %}
+        {% include "components/answer_card.html" with index=forloop.counter %}
     {% endfor %}
     <hr class="separator-line" />
     <div class="container-fluid">
